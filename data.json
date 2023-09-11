@@ -1,0 +1,17 @@
+[
+  {
+    "tradenameA": "ミネラルウォーターA",
+    "ingredientsA": "鉱水A",
+    "contentQuantityA": 500
+  },
+  {
+    "tradenameB": "ミネラルウォーターB",
+    "ingredientsB": "鉱水B",
+    "contentQuantityB": 600
+  },
+  {
+    "tradenameC": "ミネラルウォーターC",
+    "ingredientsC": "鉱水C",
+    "contentQuantityC": 700
+  }
+]
