@@ -1,60 +1,32 @@
 import data from "./data.json" assert { type: "json" };
+const buttons = document.querySelectorAll("#buttons button");
+const listId = document.getElementById("listId");
+const listTag1 = document.createElement("p");
+const listTag2 = document.createElement("p");
+const listTag3 = document.createElement("p");
+const product = data.product;
 
-const buttonA = document.getElementById("buttonA");
-const buttonB = document.getElementById("buttonB");
-const buttonC = document.getElementById("buttonC");
-
-function list1() {
-  const list1 = document.getElementById("list1");
-  list1.style.display = "block";
-  const listLi1 =  document.createElement('p');
-  const listLi2 =  document.createElement('p');
-  const listLi3 =  document.createElement('p');
-  listLi1.innerHTML = data[0].tradenameA;
-  listLi2.innerHTML = data[0].ingredientsA;
-  listLi3.innerHTML = data[0].contentQuantityA;
-  list1.before(listLi1);
-  list1.before(listLi2);
-  list1.before(listLi3);
+function list(num) {
+  const tradename = product[num].商品名;
+  const ingredients = product[num].原材料;
+  const contentQuantity = product[num].内容量;
+  listTag1.innerHTML = tradename;
+  listTag2.innerHTML = ingredients;
+  listTag3.innerHTML = contentQuantity;
+  listId.before(listTag1);
+  listId.before(listTag2);
+  listId.before(listTag3);
 }
-
-function list2() {
-  const list2 = document.getElementById("list2");
-  list2.style.display = "block";
-  const listLi1 =  document.createElement('p');
-  const listLi2 =  document.createElement('p');
-  const listLi3 =  document.createElement('p');
-  listLi1.innerHTML = data[1].tradenameB;
-  listLi2.innerHTML = data[1].ingredientsB;
-  listLi3.innerHTML = data[1].contentQuantityB;
-  list2.before(listLi1);
-  list2.before(listLi2);
-  list2.before(listLi3);
-}
-
-function list3() {
-  const list3 = document.getElementById("list3");
-  list3.style.display = "block";
-  const listLi1 =  document.createElement('p');
-  const listLi2 =  document.createElement('p');
-  const listLi3 =  document.createElement('p');
-  listLi1.innerHTML = data[2].tradenameC;
-  listLi2.innerHTML = data[2].ingredientsC;
-  listLi3.innerHTML = data[2].contentQuantityC;
-  list3.before(listLi1);
-  list3.before(listLi2);
-  list3.before(listLi3);
-}
-
-buttonA.addEventListener("click", () => {
-  list1();
+let lists = [].slice.call(buttons);
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    list(lists.indexOf(btn));
+  });
 });
 
-buttonB.addEventListener("click", () => {
-  list2();
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", () => {
+  const search = document.getElementById("search").value;
+  let result = data.product.find((item) => item.商品名 === search);
+  console.log(result);
 });
-
-buttonC.addEventListener("click", () => {
-  list3();
-});
-

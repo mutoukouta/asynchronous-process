@@ -1,17 +1,19 @@
-[
-  {
-    "tradenameA": "ミネラルウォーターA",
-    "ingredientsA": "鉱水A",
-    "contentQuantityA": 500
-  },
-  {
-    "tradenameB": "ミネラルウォーターB",
-    "ingredientsB": "鉱水B",
-    "contentQuantityB": 600
-  },
-  {
-    "tradenameC": "ミネラルウォーターC",
-    "ingredientsC": "鉱水C",
-    "contentQuantityC": 700
-  }
-]
+{
+  "product": [
+    {
+      "商品名": "ミネラルウォーター",
+      "原材料": "鉱水",
+      "内容量": 500
+    },
+    {
+      "商品名": "炭酸水",
+      "原材料": "硬水",
+      "内容量": 600
+    },
+    {
+      "商品名": "オレンジジュース",
+      "原材料": "オレンジ",
+      "内容量": 700
+    }
+  ]
+}
