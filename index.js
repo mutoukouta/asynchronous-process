@@ -47,15 +47,23 @@ buttons.forEach((btn) => {
 const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", () => {
   const search = document.getElementById("search").value;
+  let searchArr = search.split(/[\s\u3000]+/);
+  let dataArr = [];
 
   for (let i = 0; i < data.length; i++) {
     let dataList = data[i];
-    for (const key in dataList) {
-      console.log(dataList[key]);
+    let check = true;
+    let tmp = dataList.name + dataList.desc;
+    for (let a = 0; a < searchArr.length; a++) {
+      if (tmp === tmp.replace(searchArr[a], "")) {
+        check = false;
+        break;
+      }
+      tmp = tmp.replace(searchArr[a], "");
+    }
+    if (check) {
+      dataArr.push(dataList);
     }
   }
+  console.log(dataArr);
 });
-
-// dataList[key].match(search);
-//dataList[key].match(search,"g");
-//console.log(matches);
