@@ -1,32 +1,61 @@
 import data from "./data.json" assert { type: "json" };
-const buttons = document.querySelectorAll("#buttons button");
-const listId = document.getElementById("listId");
-const listTag1 = document.createElement("p");
-const listTag2 = document.createElement("p");
-const listTag3 = document.createElement("p");
-const product = data.product;
 
-function list(num) {
-  const tradename = product[num].商品名;
-  const ingredients = product[num].原材料;
-  const contentQuantity = product[num].内容量;
-  listTag1.innerHTML = tradename;
-  listTag2.innerHTML = ingredients;
-  listTag3.innerHTML = contentQuantity;
-  listId.before(listTag1);
-  listId.before(listTag2);
-  listId.before(listTag3);
+//ボタンの出力
+for (let i = 0; i < data.length; i++) {
+  let recipeItem = document.createElement("button"); // li要素を作成
+  let textNode = document.createTextNode(data[i].name); // テキストノードを作成
+  recipeItem.appendChild(textNode); // テキストノードをli要素に追加
+  let recipeButton = document.getElementById("buttons"); // ul要素を取得
+  recipeButton.appendChild(recipeItem);
 }
-let lists = [].slice.call(buttons);
+
+//レシピボタンが押下後
+function list(num) {
+  let recipeList = document.createElement("li");
+
+  let recipeName = document.createTextNode(
+    "recipeName:" + data[num].name + "/"
+  );
+  let recipeDesc = document.createTextNode(
+    "recipeDesc:" + data[num].desc + "/"
+  );
+  let recipeCreator = document.createTextNode(
+    "recipeCreator:" + data[num].creator + "/"
+  );
+  let recipeCalorie = document.createTextNode(
+    "recipeCalorie:" + data[num].calorie + "/"
+  );
+  let recipeTime = document.createTextNode(
+    "recipeTime:" + data[num].time + "/"
+  );
+  recipeList.appendChild(recipeName);
+  recipeList.appendChild(recipeDesc);
+  recipeList.appendChild(recipeCreator);
+  recipeList.appendChild(recipeCalorie);
+  recipeList.appendChild(recipeTime);
+  let recipeDisplay = document.getElementById("recipeDisplay");
+  recipeDisplay.appendChild(recipeList);
+}
+const buttons = document.querySelectorAll("#buttons button");
+let buttonLists = [].slice.call(buttons);
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    list(lists.indexOf(btn));
+    list(buttonLists.indexOf(btn));
   });
 });
 
 const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", () => {
   const search = document.getElementById("search").value;
-  let result = data.product.find((item) => item.商品名 === search);
-  console.log(result);
+
+  for (let i = 0; i < data.length; i++) {
+    let dataList = data[i];
+    for (const key in dataList) {
+      console.log(dataList[key]);
+    }
+  }
 });
+
+// dataList[key].match(search);
+//dataList[key].match(search,"g");
+//console.log(matches);
