@@ -8,15 +8,27 @@
   </head>
   <body>
     <h1>テスト</h1>
-    <div id="buttons"></div>
-    <table>
+    <!-- <div id="buttons"></div> -->
+    <table id="recipeDisplay">
+      <tr>
+        <th>レシピ名</th>
+        <th>説明</th>
+        <th>制作者</th>
+        <th>カロリー</th>
+        <th>調理時間</th>
+      </tr>
+      <tr id="recipeList">
+        <td id="recipeName"></td>
+        <td id="recipeDesc"></td>
+        <td id="recipeCreator"></td>
+        <td id="recipeCalorie"></td>
+        <td id="recipeTime"></td>
+      </tr>
     </table>
-    <ul id="recipeDisplay"></ul>
 
     <div>
       <input id="search" type="text" value="" />
       <button id="searchButton">検索</button>
-      <p id="searchlead">検索結果</p>
     </div>
     <script type="module" src="./index.js"></script>
   </body>

@@ -1,3 +1,14 @@
-button{
-    margin: 5px;
+th,
+td {
+  border: 1px #333 solid; /* 枠線をつける */
+  padding: 5px;
+  width: auto;
+}
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.color{
+    background-color: darkgoldenrod;
 }
